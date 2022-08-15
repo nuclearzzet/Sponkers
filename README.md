@@ -1,0 +1,3 @@
+# Sponkers
+
+A Discord Bot

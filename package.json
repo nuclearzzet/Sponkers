@@ -1,0 +1,16 @@
+{
+  "name": "sponkers",
+  "version": "1.0.0",
+  "description": "A discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run"
+  },
+  "author": "nuclearzzet",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "discord.js": "^14.2.0",
+    "dotenv": "^16.0.1"
+  }
+}
