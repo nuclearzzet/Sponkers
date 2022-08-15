@@ -14,9 +14,9 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
 
-    const commandName = interaction;
+    const { commandName } = interaction;
 
-    if(commandName == 'ping'){
+    if(commandName === 'ping'){
         await interaction.reply('Pong!');
     };
 });

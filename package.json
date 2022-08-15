@@ -4,7 +4,7 @@
   "description": "A discord bot",
   "main": "index.js",
   "scripts": {
-    "test": "npm run"
+    "start": "node src/index.js"
   },
   "author": "nuclearzzet",
   "license": "MIT",
