@@ -9,7 +9,6 @@ client.commands = new Collection();
 const commands = readdirSync(`./commands/${dirs}/`).filter(d => d.endsWith('.js'))
 for(let file of commands){
 	let pull = require(`./commands/${dirs}/${file}`);
-	
 }
 
 client.once('ready', () => {
