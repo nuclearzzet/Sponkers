@@ -1,14 +1,19 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const { token } = require('../config.json');
-const { readdirSync } = require('node:fs');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds]});
 
 client.commands = new Collection();
 
-const commands = readdirSync(`./commands/${dirs}/`).filter(d => d.endsWith('.js'))
-for(let file of commands){
-	let pull = require(`./commands/${dirs}/${file}`);
+const commandsPath = path.join('N:/Sponkers/src/commands', 'info');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	client.commands.set(command.data.name, command);
 }
 
 client.once('ready', () => {
@@ -18,7 +23,7 @@ client.once('ready', () => {
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
-	const command = client.commands.get(interaction.commandName);
+	const command = interaction.client.commands.get(interaction.commandName);
 
 	if (!command) return;
 
