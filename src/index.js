@@ -3,22 +3,17 @@ const { token } = require('../config.json');
 const fs = require('node:fs');
 const path = require('node:path');
 
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds]});
 
 client.commands = new Collection();
 
-const commandsPath = path.join('N:/Sponkers/src/commands', 'info');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
-	client.commands.set(command.data.name, command);
-}
 
 client.once('ready', () => {
     console.log("Ready!");
 });
+
+const cmdh = require('./handlers/commandHandler')(client)
 
 client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
