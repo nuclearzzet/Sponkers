@@ -3,5 +3,6 @@
 A Discord Bot
 
 ## Primary Focus
-..Moderation
-..Server-Related Functions
+- Moderation
+- Server Related Functions
+- User Functions
