@@ -1,12 +1,13 @@
 const { readdirSync } = require('fs')
 
-module.exports = (client, Dicord) => {
+module.exports = (client, Discord) => {
     const load = (dirs) => {
         eventFiles = readdirSync(`./src/events/${dirs}/`).filter(file => file.endsWith('.js'));
 
-        for (let file in eventFiles){
+        for (const file of eventFiles){
             const event = require(`../events/${dirs}/${file}`)
-            client.events.set(event.data.name, event);
+            const eventName = file.split('.')[0];
+            client.on(eventName, event.bind(null, Discord, client));
         }
     }
     ['client', 'guild'].forEach(dir => {
