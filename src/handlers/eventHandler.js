@@ -5,9 +5,13 @@ module.exports = (client, Discord) => {
         eventFiles = readdirSync(`./src/events/${dirs}/`).filter(file => file.endsWith('.js'));
 
         for (const file of eventFiles){
-            const event = require(`../events/${dirs}/${file}`)
-            const eventName = file.split('.')[0];
-            client.on(eventName, event.bind(null, Discord, client));
+            const event = require(`../events/${dirs}/${file}`);
+            const eventName = event.name;
+            if(event.once){
+                client.once(event.name, (...args) => event.execute(...args));
+            }else{
+                client.on(event.name, (...args) => event.execute(...args));
+            }
         }
     }
     ['client', 'guild'].forEach(dir => {

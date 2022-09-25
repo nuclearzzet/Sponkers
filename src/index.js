@@ -10,11 +10,11 @@ const client = new Discord.Client({ intents: [GatewayIntentBits.Guilds]});
 client.commands = new Collection();
 client.events = new Collection();
 
-client.once('ready', () => {
-    console.log("Ready!");
-});
+// client.once('ready', () => {
+//     console.log("Ready!");
+// });
 
-['commandHandler'].forEach(handler => {
+['eventHandler', 'commandHandler'].forEach(handler => {
 	require(`./handlers/${handler}`)(client, Discord);
 })
 

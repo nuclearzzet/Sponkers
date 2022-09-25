@@ -1,3 +1,7 @@
-module.exports = () => {
-    console.log("Sponkers is Online!")
+module.exports = {
+    name: 'ready',
+    once: true,
+    execute(){
+        console.log("Sponkers is Online!");
+    }
 }
