@@ -1,7 +1,7 @@
 module.exports = {
     name: 'ready',
     once: true,
-    execute(){
-        console.log("Sponkers is Online!");
+    execute(client){
+        console.log(`Ready! Logged In as ${client.user.tag}`);
     }
 }
