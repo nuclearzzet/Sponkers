@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -6,6 +6,15 @@ module.exports = {
             .setDescription("Replies with user info"),
     
     async execute(interaction){
-        await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+        const message = new EmbedBuilder()
+                            .setColor(0x0099FF)
+                            .setTitle(`${interaction.user.tag}`)
+                            .addFields(
+                                {name: 'Id:', value: `${interaction.user.id}`},
+                                {name: 'Tag:', value: `${interaction.user.tag}`},
+                                {name: 'Created At:', value: `${interaction.user.createdAt}`},
+                            );
+        
+        await interaction.channel.send({embeds: [message]});
     }
 }
