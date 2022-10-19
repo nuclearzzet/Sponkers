@@ -11,6 +11,7 @@ module.exports = {
                             .setTitle(`${interaction.user.tag}`)
                             .addFields(
                                 {name: 'Id:', value: `${interaction.user.id}`},
+                                {name: 'Username:', value: `${interaction.user.username}`},
                                 {name: 'Tag:', value: `${interaction.user.tag}`},
                                 {name: 'Created At:', value: `${interaction.user.createdAt}`},
                             );
