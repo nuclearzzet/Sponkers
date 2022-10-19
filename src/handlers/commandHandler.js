@@ -9,7 +9,7 @@ module.exports = (client, Discord) => {
             client.commands.set(command.data.name, command)
         }
     }
-    ['fun', 'info', 'moderation', 'owner'].forEach(dir =>{
+    ['fun', 'info', 'moderation', 'music', 'owner'].forEach(dir =>{
         load(dir);
     })
 }

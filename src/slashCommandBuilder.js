@@ -15,7 +15,7 @@ const deploy = (dirs) => {
     }
 }
 
-['fun', 'info', 'moderation', 'owner'].forEach(dir => {
+['fun', 'info', 'moderation', 'music', 'owner'].forEach(dir => {
     deploy(dir)
 })
 
