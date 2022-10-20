@@ -3,9 +3,16 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
             .setName("whoami")
-            .setDescription("Replies with user info"),
+            .setDescription("Replies with user info")
+            .addUserOption(option =>
+                option
+                    .setName('user')
+                    .setDescription('The user')),
     
     async execute(interaction){
+
+        const user = interaction.options.getUser('user');
+
         const message = new EmbedBuilder()
                             .setColor(0x0099FF)
                             .setTitle(`${interaction.user.tag}`)
