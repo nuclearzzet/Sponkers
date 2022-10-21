@@ -17,10 +17,13 @@ module.exports = {
                     
                     const roleName = interaction.options.getString("name");
 
-                    await interaction.guild.roles.create({name: roleName, permissions: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.SendMessages]});
-                    await interaction.reply("Created");
+                    if(await interaction.guild.roles.create({name: roleName})){
+                        await interaction.reply("Created");
+                    }else{
+                        await interaction.reply("Could not be created");
+                    }
                 }else{
-                    await interaction.reply("You don't have permission to execute this command")
+                    await interaction.reply('You don\'t have permission to execute this command');
                 }
             }
 }

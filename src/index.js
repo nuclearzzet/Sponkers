@@ -1,7 +1,10 @@
+// Imports
 const Discord = require('discord.js');
 const { token } = require('../config.json');
 
-const client = new Discord.Client({intents: [Discord.GatewayIntentBits.Guilds]});
+// Client
+const client = new Discord.Client({intents: [
+	Discord.GatewayIntentBits.Guilds,]});
 
 // Discord Collections
 client.commands = new Discord.Collection();

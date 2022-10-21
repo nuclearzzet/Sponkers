@@ -22,6 +22,12 @@ module.exports = {
                         { name: '/ban', value: 'To ban a user from the server'},
                         { name: '/unban', value: 'To unban a user from the server'},
 
+                        // Server Functions
+                        { name: '/channel-create', value: 'To create a channel'},
+                        { name: '/channel-delete', value: 'To delete a channel'},
+                        { name: '/role-create', value: 'To create a role'},
+                        { name: '/role-delete', value: 'To delete a role'},
+
                         // Music Commands
                         { name: '/play', value: 'To play a given music'},
                         { name: '/pause', value: 'To pause the current music'},
@@ -29,7 +35,10 @@ module.exports = {
                         { name: '/queue', value: 'To get the queue'},
                     );
 
-        await interaction.channel.send({embeds: [message]});
+        if(await interaction.user.send({embeds: [message]})){
+            await interaction.reply("Check your dm");
+        }else{
+            await interaction.reply("Could not send")
+        }
     }
-
 }

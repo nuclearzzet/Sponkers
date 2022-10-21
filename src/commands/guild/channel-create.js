@@ -15,12 +15,15 @@ module.exports = {
             async execute(interaction){
                 if (interaction.member.permissions.has(PermissionsBitField.Flags.ManageChannels) || interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)){
                     
-                    const channelName = interaction.options.getString('name')
+                    const channelName = interaction.options.getString('name');
 
-                    await interaction.guild.channels.create({name: channelName})
-                    await interaction.reply(`Created channel ${channelName}`)
+                    if(await interaction.guild.channels.create({name: channelName})){
+                        await interaction.reply(`Created channel ${channelName}`);
+                    }else{
+                        await interaction.reply("Could not be created");
+                    }
                 }else{
-                    await interaction.reply("You don't have permission to execute this command")
+                    await interaction.reply("You don't have permission to execute this command");
                 }
             }
 }
